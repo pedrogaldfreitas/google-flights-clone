@@ -1,0 +1,44 @@
+.itineraries {
+    margin-top: 50px;
+    
+    .itinerary-cards {
+        display: flex;
+        width: auto;
+        height: 150px;
+        background-color:rgba(0, 0, 0, 0.521);
+        border-radius: 25px;
+        margin-bottom: 15px;
+        justify-content: space-between;
+        padding-left: 20px;
+        padding-right: 20px;
+        transition: background-color, 0.5s, ease;
+
+        .itinerary-card {
+            padding: 15px;
+            align-content: center;
+
+            .flight-logo {
+                height: 50px;
+            }
+
+            .flight-detail {     
+                &--1 {
+                    text-align: left;
+                    font-size: 15pt;
+
+                    &.price {
+                        font-weight: bold;
+                    }
+                }
+                &--2 {
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+
+.itinerary-cards:hover {
+    background-color:rgba(255, 255, 255, 0.336);
+    cursor: pointer;
+}

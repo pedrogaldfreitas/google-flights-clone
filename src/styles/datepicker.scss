@@ -1,0 +1,80 @@
+.price-calendar-parent {
+    display: flex;
+    flex-direction: column;
+    font-size: 10pt;
+    color: rgba(255, 255, 255, 0.527);
+
+    .react-datepicker {
+        width: 100%;
+        &__day-names {
+            display:flex;
+            width: fit-content;
+            margin: 0.4rem;
+            .react-datepicker__day-name {
+                width: 50px;
+                margin: 2.656px;
+            }
+        }
+        &__month-container {
+            width: 100%;
+            .react-datepicker__day {
+                width: 50px;
+                height: 50px;
+                border-radius: 10%;
+                &--selected {
+                    background-color:rgba(0, 183, 255, 0.493);
+                }
+                &--outside-month {
+                    background-color:transparent;
+                    color: transparent;
+                    &:hover {
+                        cursor: default;
+                        background-color: transparent;
+                    }
+                }
+                .flight-price {
+                    font-weight: bold;
+                    &.--low {
+                        color: rgb(1, 151, 9);
+                    }
+                    &.--medium {
+                        color: rgb(196, 192, 0);
+                    }
+                    &.--high {
+                        color: rgb(179, 0, 0);
+                    }
+                    &.--not-available {
+                        color: gray;
+                    }
+                }
+            }
+        }
+    }
+    
+    .react-datepicker-wrapper {
+        height: 100%;
+        
+        .react-datepicker__input-container {
+            height: 100%;
+            
+            input {
+                border-radius: 40px;
+                border: 0;
+                height: 100%; 
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.247);
+                color: rgba(255, 255, 255, 0.589);
+                justify-items: center;
+                padding: 0;
+                transition: background-color 0.3s ease;
+                transition: color 0.3 ease;
+
+                &.--disabled {
+                    background-color: rgba(0, 0, 0, 0.425);
+                    color: rgba(255, 255, 255, 0.13);
+                }
+
+            }
+        }
+    }
+}
