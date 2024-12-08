@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import DatePicker from 'react-datepicker'
 import { formatDate, PriceCalendar } from './components/PriceCalendar'
 import SearchAirports from './components/SearchAirports'
 import MenuItem from '@mui/material/MenuItem';
@@ -25,16 +24,7 @@ const headers = {
 function App() {
   const [departPort, setDepartPort] = useState();
   const [destPort, setDestPort] = useState();
-  /*{
-    skyId: 'EWR',
-    entityId: '95565059'
-  }
-  {
-    skyId: 'JFK',
-    entityId: '95565058'
-  }*/
-  const [currency, setCurrency] = useState('USD');
-  
+  const currency = 'USD';  
   const [departDate, setDepartDate] = useState(new Date());
   const [returnDate, setReturnDate] = useState(new Date());
   const [cabinClass, setCabinClass] = useState('economy');
@@ -44,6 +34,7 @@ function App() {
   const [loadingItineraries, setLoadingItineraries] = useState(false);
   const [itineraries, setItineraries] = useState([]);
   const [whichTrip, setWhichTrip] = useState('depart');
+  const [searched, setSearched] = useState(false);
   let needsRefresh = true;
         
   function AdultCounter() {
@@ -86,7 +77,6 @@ function App() {
     needsRefresh = false;
     setLoadingItineraries(false);
     setItineraries(data.data.itineraries);
-    console.log("Itineraries = " + data.data.itineraries);
   }
 
   //END of SearchFlights area
@@ -132,7 +122,6 @@ function App() {
             currency={currency} 
             setDate={(arg) => {
               setDepartDate(arg);
-              //IF return date < depart date, set return date to depart date + 1
               setReturnDate(arg+1);
             }}
             disableBtnCondition={!departPort || !destPort}/>
@@ -166,6 +155,7 @@ function App() {
               setSortBy(event.target.value);
               if (!needsRefresh) {
                 SearchFlights();
+                setSearched(true);
               }
             }}
             displayEmpty
@@ -185,6 +175,10 @@ function App() {
           <CircleLoader color="white" size="80px"/>
         </div>
       )}
+      { searched && 
+        <div className="itineraries-header">
+          {whichTrip === "depart" ? "Choose an outbound flight" : "Choose a return flight"}
+        </div>}
       {(whichTrip == "depart") && (
         <div className="itineraries">
           {itineraries.map((itinerary, index) => (<ItineraryCards key={index} itinerary={itinerary} whichTrip={whichTrip} onChooseItinerary={() => {

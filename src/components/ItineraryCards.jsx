@@ -40,7 +40,7 @@ export default function ItineraryCards({itinerary, whichTrip, onChooseItinerary}
                     {itinerary?.price?.formatted}
                 </div>
                 <div className="flight-detail--2">
-                    round trip {/** PLACEHOLDER VALUE: either round trip of one-way */}
+                    {itinerary?.legs.length > 1 ? "Round trip" : "One way"}
                 </div>
             </div>
         </div>

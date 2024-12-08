@@ -6,7 +6,6 @@ import { isBefore, startOfDay, subDays } from 'date-fns';
 import debounce from "lodash/debounce"
 import '../styles/datepicker.scss'
 
-//const headers = JSON.parse(import.meta.env.VITE_API_HEADERS);
 const headers = {
     "x-rapidapi-key": import.meta.env.VITE_API_KEY, 
     "x-rapidapi-host": 'sky-scrapper.p.rapidapi.com'
@@ -14,7 +13,7 @@ const headers = {
 
 export const formatDate = (date) => {
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
 };
@@ -25,6 +24,7 @@ export function PriceCalendar({departOrReturn, departDate, returnDate, departPor
     if (!(dateVariable instanceof Date)) {
       dateVariable = new Date(dateVariable);
     }
+
     //Put a loader under each date until the prices are retrieved.
     let isOnCurrentMonth = false;
     const month = dateVariable.getMonth() + 1;
@@ -35,8 +35,8 @@ export function PriceCalendar({departOrReturn, departDate, returnDate, departPor
       let days = weeks[week].getElementsByClassName("react-datepicker__day")
       Array.from(days).forEach((element) => {
         const dayNum = parseInt(element.textContent);
-        //IF current month has not begun yet, get rid of this number.
 
+        //IF current month has not begun yet, get rid of this number.
         if (dayNum == 1) {
           isOnCurrentMonth = !isOnCurrentMonth;
         }
@@ -112,7 +112,6 @@ export function PriceCalendar({departOrReturn, departDate, returnDate, departPor
     selected={departDate} 
     disabled={disableBtnCondition}
     className={disableBtnCondition && '--disabled'}
-    //minDate={new Date()}
     minDate={departOrReturn === "depart" ? new Date() : new Date(returnDate)}
     showDisabledMonthNavigation
     startDate={departOrReturn === "return" && new Date(departDate)}
@@ -120,7 +119,6 @@ export function PriceCalendar({departOrReturn, departDate, returnDate, departPor
     onCalendarOpen={() => DisplayLoadersAndCalendarPrices(departDate, departPort.skyId, destPort.skyId, currency)}
     onMonthChange={date => DisplayLoadersAndCalendarPrices(date, departPort.skyId, destPort.skyId, currency)} 
     onChange={(date) => {
-      console.log(date + ", type = " + typeof date)
       setDate(date);
     }} 
   />)
