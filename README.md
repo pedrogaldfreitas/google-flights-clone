@@ -1,8 +1,6 @@
-# React + Vite
+# SPOTTER NOTE:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I attempted to submit the Loom presentation in the submission, but the form was sent before I could.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ # Here is the link to the presentation:
+https://www.loom.com/share/1c7dc4db30124dc98ff3a222b46facc7?sid=ba39d7ed-ab4b-40e6-bb1b-5bd98bb15822
